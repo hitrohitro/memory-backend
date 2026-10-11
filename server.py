@@ -46,7 +46,7 @@ SECRET_PATTERNS = [
 ]
 SECRET_RE = re.compile("|".join(SECRET_PATTERNS))
 
-app = FastAPI(title="memory-backend")
+app = FastAPI(title="memory-backend", docs_url=None, redoc_url=None, openapi_url=None)
 
 
 # ---------- db ----------
