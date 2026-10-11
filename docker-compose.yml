@@ -1,0 +1,14 @@
+services:
+  memory-backend:
+    build: .
+    restart: unless-stopped
+    user: "1000:1000"            # run `id -u` and `id -g`; use your own values
+    ports:
+      - "127.0.0.1:8787:8787"    # localhost only; the tunnel points here
+    environment:
+      BACKEND_SECRET: ${BACKEND_SECRET}
+      DB_PATH: /data/memory.db
+      VAULT_DIR: /vault
+    volumes:
+      - ./data:/data                      # DB on the internal disk
+      - ${HOME}/memory-vault:/vault       # markdown export for Obsidian
